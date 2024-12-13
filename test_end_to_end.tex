@@ -1,0 +1,105 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Configuration pour le code source
+\lstset{
+    language=JavaScript,
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    stringstyle=\color{green!70!black},
+    commentstyle=\color{gray},
+    numbers=left,
+    numberstyle=\tiny, 
+    stepnumber=1, 
+    numbersep=5pt,
+    frame=single,
+    tabsize=2,
+    breaklines=true,
+    breakatwhitespace=false,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    captionpos=b,
+}
+
+\title{\textbf{Partie : Tests End-to-End avec Cypress}}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Définition et rôle des tests End-to-End}
+
+\subsection*{Définition}
+Les tests End-to-End (E2E) visent à valider le bon fonctionnement d'une application dans son intégralité, du début à la fin. Ces tests simulent le comportement des utilisateurs réels en interagissant avec l'interface utilisateur et les API pour vérifier que tous les flux de travail critiques fonctionnent correctement.
+
+\subsection*{Rôles des tests E2E}
+\begin{itemize}
+    \item \textbf{Validation de l'expérience utilisateur} : Assure que l'utilisateur final peut naviguer dans l'application sans rencontrer d'erreurs.
+    \item \textbf{Détection des problèmes d'intégration} : Identifie les erreurs qui surviennent lorsque plusieurs composants interagissent (par exemple, interface utilisateur, backend, bases de données).
+    \item \textbf{Prévention des régressions} : Garantit que les nouvelles fonctionnalités ou modifications n'introduisent pas de bugs dans les parties existantes de l'application.
+    \item \textbf{Amélioration de la fiabilité} : Aide à maintenir une application robuste en reproduisant des scénarios utilisateurs dans des environnements proches de la production.
+\end{itemize}
+
+\section*{Présentation de Cypress}
+
+\subsection*{Qu'est-ce que Cypress ?}
+Cypress est un framework de test E2E moderne et open source, conçu pour tester les applications web. Il est particulièrement apprécié pour sa simplicité, sa rapidité et son intégration avec JavaScript.
+
+\subsection*{Avantages de Cypress}
+\begin{itemize}
+    \item \textbf{Rapidité et efficacité} : Cypress exécute les tests directement dans le navigateur, ce qui le rend rapide et fiable.
+    \item \textbf{Débogage amélioré} : Offre des outils puissants pour visualiser chaque étape du test, avec des captures d'écran et des vidéos.
+    \item \textbf{Exécution en temps réel} : Les développeurs peuvent observer leurs tests s'exécuter en temps réel dans un navigateur.
+    \item \textbf{API intuitive} : Une syntaxe simple et claire pour écrire des tests.
+    \item \textbf{Écosystème intégré} : Cypress inclut tout ce dont vous avez besoin (pas besoin d'installer des outils supplémentaires pour les assertions, les spies ou les mocks).
+\end{itemize}
+
+\section*{Configuration de Cypress}
+
+\subsection*{Pré-requis}
+\begin{itemize}
+    \item Node.js installé sur votre machine.
+    \item Une application web à tester.
+\end{itemize}
+
+\subsection*{Étapes de configuration}
+\begin{enumerate}
+    \item \textbf{Installation de Cypress :}
+    \begin{lstlisting}
+    npm install cypress --save-dev
+    \end{lstlisting}
+    
+    \item \textbf{Ouverture de Cypress :}
+    \begin{lstlisting}
+    npx cypress open
+    \end{lstlisting}
+    Cela ouvre l'interface graphique de Cypress où vous pouvez voir et exécuter vos tests.
+
+    \item \textbf{Structure du projet Cypress :}
+    \begin{itemize}
+        \item \texttt{cypress/integration} : Dossier où les fichiers de test sont enregistrés.
+        \item \texttt{cypress/fixtures} : Contient les données de test (JSON).
+        \item \texttt{cypress/plugins} : Fournit une extension pour Cypress.
+        \item \texttt{cypress/support} : Contient des commandes personnalisées.
+    \end{itemize}
+\end{enumerate}
+
+\section*{Exemple de test : Authentification et navigation}
+
+\subsection*{Scénario}
+\begin{enumerate}
+    \item Accéder à la page de connexion.
+    \item Saisir les identifiants de l'utilisateur.
+    \item Soumettre le formulaire.
+    \item Vérifier que l'utilisateur est redirigé vers la page d'accueil.
+    \item Tester la navigation vers une autre page (secure, checkbox, image et dropdown).
+\end{enumerate}
+
+\end{document}
